@@ -51,7 +51,7 @@
 
 C 语言中，尝试读取数据结构之后的值是未定义行为（undefined behavior）。你会得到任何对应数据结构中这个元素的内存位置的值，甚至是这些内存并不属于这个数据结构的情况。这被称为 **缓冲区溢出**（*buffer overread*），并可能会导致安全漏洞，比如攻击者可以像这样操作索引来读取储存在数据结构之后不被允许的数据。
 
-为了保护程序远离这类漏洞，如果尝试读取一个索引不存在的元素，Rust 会停止执行并拒绝继续。尝试运行上面的程序会出现如下：
+为了保护程序远离这类漏洞，如果尝试读取一个索引不存在的元素，Rust 会停止执行并拒绝继续。尝试运行上面的程序会出现如下输出：
 
 ```console
 {{#include ../listings/ch09-error-handling/listing-09-01/output.txt}}
@@ -91,4 +91,4 @@ note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose bac
 本章后面的小节 [“要不要 panic!”][to-panic-or-not-to-panic] 会再次回到 `panic!` 并讲解何时应该、何时不应该使用 `panic!` 来处理错误情况。接下来，我们来看看如何使用 `Result` 来从错误中恢复。
 
 [to-panic-or-not-to-panic]:
-ch09-03-to-panic-or-not-to-panic.html#panic-还是不-panic
+ch09-03-to-panic-or-not-to-panic.html#要不要-panic

@@ -2,7 +2,7 @@
 
 > [ch01-02-hello-world.md](https://github.com/rust-lang/book/blob/main/src/ch01-02-hello-world.md)
 > <br>
-> commit f801008f555e4e94aae826cf45f3a8011a773098
+> commit 1fb74c3f1d8aeba39373e9f4cdb9a4bdca95604f
 
 既然安装好了 Rust，是时候来编写第一个 Rust 程序了。当学习一门新语言的时候，使用该语言在屏幕上打印 `Hello, world!` 是一项传统，我们将沿用这一传统！
 
@@ -38,7 +38,9 @@ $ cd hello_world
 
 现在打开刚创建的 *main.rs* 文件，输入示例 1-1 中的代码。
 
-<span class="filename">文件名：main.rs</span>
+<figure class="listing">
+
+<span class="file-name">文件名：main.rs</span>
 
 ```rust
 fn main() {
@@ -46,7 +48,10 @@ fn main() {
 }
 ```
 
-<span class="caption">示例 1-1: 一个打印 `Hello, world!` 的程序</span>
+<figcaption>示例 1-1：一个打印 `Hello, world!` 的程序</figcaption>
+
+</figure>
+
 
 保存文件，并回到当前目录为“~/projects/hello_world”的终端窗口。在 Linux 或 macOS 上，输入如下命令，编译并运行文件：
 
@@ -92,7 +97,7 @@ fn main() {
 
 这行代码完成这个简单程序的所有工作：在屏幕上打印文本。这里有四个重要的细节需要注意。首先 Rust 的缩进风格使用 4 个空格，而不是 1 个制表符（tab）。
 
-第二，`println!` 调用了一个 Rust 宏（macro）。如果是调用函数，则应输入 `println`（没有`!`）。我们将在第十九章详细讨论宏。现在你只需记住，当看到符号 `!` 的时候，就意味着调用的是宏而不是普通函数，并且宏并不总是遵循与函数相同的规则。
+第二，`println!` 调用了一个 Rust 宏（macro）。如果是调用函数，则应输入 `println`（没有`!`）。我们将在第二十章详细讨论宏。现在你只需记住，当看到符号 `!` 的时候，就意味着调用的是宏而不是普通函数，并且宏并不总是遵循与函数相同的规则。
 
 第三，`"Hello, world!"` 是一个字符串。我们把这个字符串作为一个参数传递给 `println!`，字符串将被打印到屏幕上。
 
@@ -138,5 +143,5 @@ $ ./main # Windows 是 .\main.exe
 
 仅仅使用 `rustc` 编译简单程序是没问题的，不过随着项目的增长，你可能需要管理你项目的方方面面，并让代码易于分享。接下来，我们要介绍一个叫做 Cargo 的工具，它会帮助你编写真实世界中的 Rust 程序。
 
-[troubleshooting]: ch01-01-installation.html#troubleshooting
-[devtools]: appendix-04-useful-development-tools.md
+[troubleshooting]: ch01-01-installation.html#故障排除troubleshooting
+[devtools]: appendix-04-useful-development-tools.html

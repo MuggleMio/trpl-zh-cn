@@ -19,7 +19,7 @@
 
 ### 编写失败测试
 
-去掉 *src/lib.rs* 和 *src/main.rs* 中用于检查程序行为的 `println!` 语句，因为不再真正需要他们了。接着我们会像 [第十一章][ch11-anatomy] 那样增加一个 `test` 模块和一个测试函数。测试函数指定了 `search` 函数期望拥有的行为：它会获取一个需要查询的字符串和用来查询的文本，并只会返回包含请求的文本行。示例 12-15 展示了这个测试，它还不能编译：
+去掉 *src/lib.rs* 和 *src/main.rs* 中用于检查程序行为的 `println!` 语句，因为不再真正需要它们了。接着我们会像 [第十一章][ch11-anatomy] 那样增加一个 `test` 模块和一个测试函数。测试函数指定了 `search` 函数期望拥有的行为：它会获取一个需要查询的字符串和用来查询的文本，并只会返回包含请求的文本行。示例 12-15 展示了这个测试，它还不能编译：
 
 <span class="filename">文件名：src/lib.rs</span>
 
@@ -41,7 +41,7 @@
 
 <span class="caption">示例 12-16：刚好足够使测试通过编译的 `search` 函数定义</span>
 
-注意需要在 `search` 的签名中定义一个显式生命周期 `'a` 并用于 `contents` 参数和返回值。回忆一下 [第十章][ch10-lifetimes] 中讲到生命周期参数指定哪个参数的生命周期与返回值的生命周期相关联。在这个例子中，我们表明返回的 vector 中应该包含引用参数 `contents`（而不是参数`query`） slice 的字符串 slice。
+注意需要在 `search` 的签名中定义一个显式生命周期 `'a` 并用于 `contents` 参数和返回值。回忆一下 [第十章][ch10-lifetimes] 中讲到生命周期参数指定哪个参数的生命周期与返回值的生命周期相关联。在这个例子中，我们表明返回的 vector 中应该包含引用参数 `contents`（而不是参数`query`）slice 的字符串 slice。
 
 换句话说，我们告诉 Rust 函数 `search` 返回的数据将与 `search` 函数中的参数 `contents` 的数据存在的一样久。这是非常重要的！为了使这个引用有效那么 **被** slice 引用的数据也需要保持有效；如果编译器认为我们是在创建 `query` 而不是 `contents` 的字符串 slice，那么安全检查将是不正确的。
 
@@ -53,7 +53,7 @@
 
 Rust 不可能知道我们需要的是哪一个参数，所以需要告诉它。因为参数 `contents` 包含了所有的文本而且我们希望返回匹配的那部分文本，所以我们知道 `contents` 是应该要使用生命周期语法来与返回值相关联的参数。
 
-其他语言中并不需要你在函数签名中将参数与返回值相关联。所以这么做可能仍然感觉有些陌生，随着时间的推移这将会变得越来越容易。你可能想要将这个例子与第十章中 [“生命周期与引用有效性”][validating-references-with-lifetimes] 部分做对比。
+其他语言中并不需要你在函数签名中将参数与返回值相关联。所以这么做可能仍然感觉有些陌生，随着时间的推移这将会变得越来越容易。你可能想要将这个例子与第十章中 [“生命周期确保引用有效”][validating-references-with-lifetimes] 部分做对比。
 
 现在运行测试：
 
@@ -111,7 +111,7 @@ Rust 有一个有助于一行一行遍历字符串的方法，出于方便它被
 {{#rustdoc_include ../listings/ch12-an-io-project/listing-12-19/src/lib.rs:here}}
 ```
 
-<span class="caption">示例 12-19：储存匹配的行以便可以返回他们</span>
+<span class="caption">示例 12-19：储存匹配的行以便可以返回它们</span>
 
 现在 `search` 函数应该返回只包含 `query` 的那些行，而测试应该会通过。让我们运行测试：
 
@@ -159,8 +159,8 @@ Rust 有一个有助于一行一行遍历字符串的方法，出于方便它被
 为了使这个项目更丰满，我们将简要的展示如何处理环境变量和打印到标准错误，这两者在编写命令行程序时都很有用。
 
 [validating-references-with-lifetimes]:
-ch10-03-lifetime-syntax.html#生命周期与引用有效性
-[ch11-anatomy]: ch11-01-writing-tests.html#the-anatomy-of-a-test-function
+ch10-03-lifetime-syntax.html#生命周期确保引用有效
+[ch11-anatomy]: ch11-01-writing-tests.html#测试函数剖析
 [ch10-lifetimes]: ch10-03-lifetime-syntax.html
 [ch3-iter]: ch03-05-control-flow.html#使用-for-遍历集合
 [ch13-iterators]: ch13-02-iterators.html

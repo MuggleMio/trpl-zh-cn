@@ -34,7 +34,7 @@
 
 <span class="caption">示例 8-21：访问哈希 map 中储存的蓝队分数</span>
 
-这里，`score` 是与蓝队分数相关的值，应为 `10`。`get` 方法返回 `Option<&V>`，如果某个键在哈希 map 中没有对应的值，`get` 会返回 `None`。程序中通过调用 `copied` 方法来获取一个 `Option<i32>` 而不是 `Option<&i32>`，接着调用 `unwrap_or` 在  `score` 中没有该键所对应的项时将其设置为零。
+这里，`score` 是与蓝队分数相关的值，应为 `10`。`get` 方法返回 `Option<&V>`，如果某个键在哈希 map 中没有对应的值，`get` 会返回 `None`。程序中通过调用 `copied` 方法来获取一个 `Option<i32>` 而不是 `Option<&i32>`，接着调用 `unwrap_or` 在  `scores` 中没有该键所对应的项时将其设置为零。
 
 可以使用与 vector 类似的方式来遍历哈希 map 中的每一个键值对，也就是 `for` 循环：
 
@@ -61,7 +61,7 @@ Blue: 10
 
 当 `insert` 调用将 `field_name` 和 `field_value` 移动到哈希 map 中后，将不能使用这两个绑定。
 
-如果将值的引用插入哈希 map，这些值本身将不会被移动进哈希 map。但是这些引用指向的值必须至少在哈希 map 有效时也是有效的。第十章 [“生命周期与引用有效性”][validating-references-with-lifetimes] 部分将会更多的讨论这个问题。
+如果将值的引用插入哈希 map，这些值本身将不会被移动进哈希 map。但是这些引用指向的值必须至少在哈希 map 有效时也是有效的。第十章 [“生命周期确保引用有效”][validating-references-with-lifetimes] 部分将会更多的讨论这个问题。
 
 ### 更新哈希 map
 
@@ -121,7 +121,7 @@ Blue: 10
 
 vector、字符串和哈希 map 会在你的程序需要储存、访问和修改数据时帮助你。这里有一些你应该能够解决的练习问题：
 
-* 给定一系列数字，使用 vector 并返回这个列表的中位数（排列数组后位于中间的值）和众数（mode，出现次数最多的值；这里哈希 map 会很有帮助）。
+* 给定一系列数字，使用 vector 并返回这个列表的中位数（排列数组后位于中间的值）和众数（出现次数最多的值；在这里哈希 map 会很有帮助）。
 * 将字符串转换为 Pig Latin，也就是每一个单词的第一个辅音字母被移动到单词的结尾并增加 “ay”，所以 “first” 会变成 “irst-fay”。元音字母开头的单词则在结尾增加 “hay”（“apple” 会变成 “apple-hay”）。牢记 UTF-8 编码！
 * 使用哈希 map 和 vector，创建一个文本接口来允许用户向公司的部门中增加员工的名字。例如，“Add Sally to Engineering” 或 “Add Amir to Sales”。接着让用户获取一个部门的所有员工的列表，或者公司每个部门的所有员工按照字典序排列的列表。
 
@@ -131,5 +131,5 @@ vector、字符串和哈希 map 会在你的程序需要储存、访问和修改
 
 [iterators]: ch13-02-iterators.html
 [validating-references-with-lifetimes]:
-ch10-03-lifetime-syntax.html#生命周期与引用有效性
+ch10-03-lifetime-syntax.html#生命周期确保引用有效
 [access]: #访问哈希-map-中的值

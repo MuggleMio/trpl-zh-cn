@@ -94,7 +94,7 @@ Rust 提供了两种引用元素的方法的原因是当尝试使用现有元素
 
 <span class="caption">示例 8-7：通过 `for` 循环遍历 vector 的元素并打印</span>
 
-我们也可以遍历可变 vector 的每一个元素的可变引用以便能改变他们。示例 8-8 中的 `for` 循环会给每一个元素加 `50`：
+我们也可以遍历可变 vector 的每一个元素的可变引用以便能改变它们。示例 8-8 中的 `for` 循环会给每一个元素加 `50`：
 
 ```rust
 {{#rustdoc_include ../listings/ch08-common-collections/listing-08-08/src/main.rs:here}}
@@ -118,9 +118,9 @@ vector 只能储存相同类型的值。这是很不方便的；绝对会有需�
 
 <span class="caption">示例 8-9：定义一个枚举，以便能在 vector 中存放不同类型的数据</span>
 
-Rust 在编译时就必须准确的知道 vector 中类型的原因在于它需要知道储存每个元素到底需要多少内存。第二个好处是可以准确的知道这个 vector 中允许什么类型。如果 Rust 允许 vector 存放任意类型，那么当对 vector 元素执行操作时一个或多个类型的值就有可能会造成错误。使用枚举外加 `match` 意味着 Rust 能在编译时就保证总是会处理所有可能的情况，正如第六章讲到的那样。
+Rust 在编译时必须确切知道 vector 中的类型，这样它才能确定在堆上需要为每个元素分配多少内存。我们还必须明确这个 vector 中允许的类型。如果 Rust 允许 vector 存储任意类型，那么可能会因为一个或多个类型在对 vector 元素执行操作时导致（类型相关）错误。使用枚举加上 `match` 表达式意味着 Rust 会在编译时确保每种可能的情况都得到处理，正如第六章讲到的那样。
 
-如果在编写程序时不能确切无遗地知道运行时会储存进 vector 的所有类型，枚举技术就行不通了。相反，你可以使用 trait 对象，第十七章会讲到它。
+如果在编写程序时不能确切无遗地知道运行时会储存进 vector 的所有类型，枚举技术就行不通了。相反，你可以使用 trait 对象，第十八章会讲到它。
 
 现在我们了解了一些使用 vector 的最常见的方式，请一定去看看标准库中 `Vec` 定义的很多其他实用方法的 [API 文档][vec-api]。例如，除了 `push` 之外还有一个 `pop` 方法，它会移除并返回 vector 的最后一个元素。
 
@@ -141,4 +141,4 @@ Rust 在编译时就必须准确的知道 vector 中类型的原因在于它需�
 [data-types]: ch03-02-data-types.html#数据类型
 [nomicon]: https://doc.rust-lang.org/nomicon/vec/vec.html
 [vec-api]: https://doc.rust-lang.org/std/vec/struct.Vec.html
-[deref]: ch15-02-deref.html#通过解引用运算符追踪指针的值
+[deref]: ch15-02-deref.html#追踪指针的值

@@ -4,7 +4,7 @@
 > <br>
 > commit 3d51f70c78162faaebcab0da0de2ddd333e7a8ed
 
-*slice* 允许你引用集合中一段连续的元素序列，而不用引用整个集合。slice 是一类引用，所以它没有所有权。
+*slice* 允许你引用集合中一段连续的元素序列，而不用引用整个集合。slice 是一种引用，所以它没有所有权。
 
 这里有一个编程小习题：编写一个函数，该函数接收一个用空格分隔单词的字符串，并返回在该字符串中找到的第一个单词。如果函数在该字符串中并未找到空格，则整个字符串就是一个单词，所以应该返回整个字符串。
 
@@ -78,15 +78,15 @@ fn second_word(s: &String) -> (usize, usize) {
 
 不同于整个 `String` 的引用，`hello` 是一个部分 `String` 的引用，由一个额外的 `[0..5]` 部分指定。可以使用一个由中括号中的 `[starting_index..ending_index]` 指定的 range 创建一个 slice，其中 `starting_index` 是 slice 的第一个位置，`ending_index` 则是 slice 最后一个位置的后一个值。在其内部，slice 的数据结构存储了 slice 的开始位置和长度，长度对应于 `ending_index` 减去 `starting_index` 的值。所以对于 `let world = &s[6..11];` 的情况，`world` 将是一个包含指向 `s` 索引 6 的指针和长度值 5 的 slice。
 
-图 4-6 展示了一个图例。
+图 4-7 展示了一个图例。
 
 <img alt="Three tables: a table representing the stack data of s, which points
 to the byte at index 0 in a table of the string data &quot;hello world&quot; on
 the heap. The third table rep-resents the stack data of the slice world, which
 has a length value of 5 and points to byte 6 of the heap data table."
-src="img/trpl04-06.svg" class="center" style="width: 50%;" />
+src="img/trpl04-07.svg" class="center" style="width: 50%;" />
 
-<span class="caption">图 4-6：引用了部分 `String` 的字符串 slice</span>
+<span class="caption">图 4-7：引用了部分 `String` 的字符串 slice</span>
 
 对于 Rust 的 `..` range 语法，如果想要从索引 0 开始，可以不写两个点号之前的值。换句话说，如下两个语句是相同的：
 
@@ -119,7 +119,7 @@ let slice = &s[0..len];
 let slice = &s[..];
 ```
 
-> 注意：字符串 slice range 的索引必须位于有效的 UTF-8 字符边界内，如果尝试从一个多字节字符的中间位置创建字符串 slice，则程序将会因错误而退出。出于介绍字符串 slice 的目的，本部分假设只使用 ASCII 字符集；第八章的 [“使用字符串存储 UTF-8 编码的文本”][strings] 部分会更加全面的讨论 UTF-8 处理问题。
+> 注意：字符串 slice range 的索引必须位于有效的 UTF-8 字符边界内，如果尝试从一个多字节字符的中间位置创建字符串 slice，则程序将会因错误而退出。出于介绍字符串 slice 的目的，本部分假设只使用 ASCII 字符集；第八章的 [“使用字符串储存 UTF-8 编码的文本”][strings] 部分会更加全面的讨论 UTF-8 处理问题。
 
 在记住所有这些知识后，让我们重写 `first_word` 来返回一个 slice。“字符串 slice” 的类型声明写作 `&str`：
 
@@ -219,5 +219,5 @@ assert_eq!(slice, &[2, 3]);
 
 [ch13]: ch13-02-iterators.html
 [ch6]: ch06-02-match.html#绑定值的模式
-[strings]: ch08-02-strings.html#使用字符串存储-utf-8-编码的文本
+[strings]: ch08-02-strings.html#使用字符串储存-utf-8-编码的文本
 [deref-coercions]: ch15-02-deref.html#函数和方法的隐式-deref-强制转换

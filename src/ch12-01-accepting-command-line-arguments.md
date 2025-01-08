@@ -1,4 +1,4 @@
-### 接受命令行参数
+## 接受命令行参数
 
 > [ch12-01-accepting-command-line-arguments.md](https://github.com/rust-lang/book/blob/main/src/ch12-01-accepting-command-line-arguments.md)
 > <br>
@@ -66,7 +66,7 @@ $ cargo run -- searchstring example-filename.txt
 
 <span class="caption">示例 12-2：创建变量来存放查询参数和文件路径参数</span>
 
-正如之前打印出 vector 时所所看到的，程序的名称占据了 vector 的第一个值 `args[0]`，所以我们从索引为 `1` 的参数开始。`minigrep` 获取的第一个参数是需要搜索的字符串，所以将其将第一个参数的引用存放在变量 `query` 中。第二个参数将是文件路径，所以将第二个参数的引用放入变量 `file_path` 中。
+正如之前打印出 vector 时所看到的，程序的名称占据了 vector 的第一个值 `args[0]`，所以我们从索引为 `1` 的参数开始。`minigrep` 获取的第一个参数是需要搜索的字符串，所以将第一个参数的引用存放在变量 `query` 中。第二个参数将是文件路径，所以将第二个参数的引用放入变量 `file_path` 中。
 
 我们将临时打印出这些变量的值来证明代码如我们期望的那样工作。使用参数 `test` 和 `sample.txt` 再次运行这个程序：
 
@@ -74,7 +74,7 @@ $ cargo run -- searchstring example-filename.txt
 {{#include ../listings/ch12-an-io-project/listing-12-02/output.txt}}
 ```
 
-好的，它可以工作！我们将所需的参数值保存进了对应的变量中。之后会增加一些错误处理来应对类似用户没有提供参数的情况，不过现在我们将忽略他们并开始增加读取文件功能。
+好的，它可以工作！我们将所需的参数值保存进了对应的变量中。之后会增加一些错误处理来应对类似用户没有提供参数的情况，不过现在我们将忽略它们并开始增加读取文件功能。
 
 [ch13]: ch13-00-functional-features.html
 [ch7-idiomatic-use]: ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#创建惯用的-use-路径
